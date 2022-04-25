@@ -12,3 +12,4 @@ xgboost
 lightgbm
 pytest
 tqdm
+streamlit-lottie
