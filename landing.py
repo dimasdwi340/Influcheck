@@ -1,6 +1,9 @@
+
 import streamlit as st
 from streamlit_lottie import st_lottie
 import requests
+from streamlit_elements import Elements
+
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -12,8 +15,8 @@ lottie_coding2 = load_lottieurl("https://assets9.lottiefiles.com/private_files/l
 
 st.set_page_config(page_title="Landing Page", page_icon="🏠", layout="wide")
 with st.container():
-    st.write("""
-    ### InfluCheck
+    st.title("""
+    InSona
     ---""")
 with st.container():
     st.write("""
@@ -21,14 +24,27 @@ with st.container():
             Kenali influencermu, pilihan tepat bagi bisnismu!
             </h2>""", unsafe_allow_html=True)
     st_lottie(lottie_coding, height = 500, key = "landing")
-   
+
 with st.container():
     left, center, right = st.columns((3,1,3))
     with center:
-        
-        mulai = st.button("Mulai Sekarang!")
-        
+        #mulai = st.button("Mulai Sekarang!",
+        #help="Klik untuk mulai")
+        mt = Elements()
+        mulai = mt.button(
+            "Mulai Sekarang!", 
+            target="_blank", 
+            size="small", 
+            variant="outlined",     
+            onclick="none", 
+            style={"color":"#000000", "background":"#ffffff"}, 
+            href="home",
+            help="Klik untuk mulai")
 
+        mt.show(key = "118")
+
+            
+        
 with st.container():
     left, right = st.columns((1,2))
     with left:
@@ -37,4 +53,4 @@ with st.container():
         st.write("""
         ## Know Your Talent! \n
         InfluCheck membantu kamu untuk mengetahui profil dan persona dari calon talent kamu, data yang kami tampilkan berdasarkan Instagram secara real time hanya dengan memasukkan username Instagram calon talent kamu.
-        """)
+        """)    
